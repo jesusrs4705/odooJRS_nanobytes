@@ -17,6 +17,20 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_students" type="object" class="oe_stat_button" icon="fa-users">
+                            <field name="students_count" widget="statinfo" string="Students"/>
+                        </button>
+                        <button name="action_view_teachers" type="object" class="oe_stat_button" icon="fa-graduation-cap">
+                            <field name="teachers_count" widget="statinfo" string="Teachers"/>
+                        </button>
+                        <button name="action_view_enrollments" type="object" class="oe_stat_button" icon="fa-book">
+                            <field name="enrollments_count" widget="statinfo" string="Enrollments"/>
+                        </button>
+                        <button name="action_view_departments" type="object" class="oe_stat_button" icon="fa-building">
+                            <field name="departments_count" widget="statinfo" string="Departments"/>
+                        </button>
+                    </div>
                     <group>
                         <field name="name"/>
                         <field name="street"/>
@@ -30,6 +44,7 @@
             </form>
         </field>
     </record>
+
 
     <record id="view_university_kanban" model="ir.ui.view">
         <field name="name">university.university.kanban</field>

@@ -18,6 +18,14 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_enrollments" type="object" class="oe_stat_button" icon="fa-book">
+                            <field name="enrollments_count" widget="statinfo" string="Enrollments"/>
+                        </button>
+                        <button name="action_view_grades" type="object" class="oe_stat_button" icon="fa-star">
+                            <field name="grades_count" widget="statinfo" string="Grades"/>
+                        </button>
+                    </div>
                     <group string="General Info">
                         <field name="name"/>
                         <field name="university_id"/>

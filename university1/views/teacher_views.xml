@@ -17,6 +17,11 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_enrollments" type="object" class="oe_stat_button" icon="fa-book">
+                            <field name="enrollments_count" widget="statinfo" string="Enrollments"/>
+                        </button>
+                    </div>
                     <group>
                         <field name="name"/>
                         <field name="university_id"/>
