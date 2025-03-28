@@ -2,6 +2,7 @@
     'name': 'University',
     'version': '1.0',
     'summary': 'University management module',
+    'author': 'Jesus Rodriguez',
     'depends': ['base'],
     'data': [
         'security/ir.model.access.csv',
