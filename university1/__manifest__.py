@@ -4,7 +4,7 @@
     'summary': 'University management module',
     'depends': ['base'],
     'data': [
-        
+        'security/ir.model.access.csv',
         'views/university_views.xml',
         'views/department_views.xml',
         'views/teacher_views.xml',
