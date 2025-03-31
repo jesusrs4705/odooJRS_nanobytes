@@ -13,6 +13,7 @@
         'views/student_views.xml',
         'views/enrollment_views.xml',
         'views/grade_views.xml',
+        'views/university_report_views.xml',
         'views/menu.xml',
     ],
     'application': True,

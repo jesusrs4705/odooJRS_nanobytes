@@ -6,3 +6,4 @@ access_university_subject,university.subject,model_university_subject,base.group
 access_university_student,university.student,model_university_student,base.group_user,1,1,1,1
 access_university_enrollment,university.enrollment,model_university_enrollment,base.group_user,1,1,1,1
 access_university_grade,university.grade,model_university_grade,base.group_user,1,1,1,1
+access_university_report,university.report,model_university_report,base.group_user,1,1,1,1

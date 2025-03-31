@@ -40,4 +40,10 @@
     <menuitem id="menu_university_grades" name="Grades"
               parent="menu_university_root"
               action="action_grade" sequence="7"/>
+    
+    <menuitem id="menu_university_reports" 
+              name="Reports" 
+              parent="menu_university_root" 
+              action="action_university_report" 
+              sequence="8"/>
 </odoo>
