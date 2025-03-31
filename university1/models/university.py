@@ -4,6 +4,7 @@ class University(models.Model):
     _name = 'university.university'
     _description = 'University'
 
+    image = fields.Image(string="Image", max_width=1920, max_height=1920)
     name = fields.Char(string="Name", required=True)
     street = fields.Char(string="Street")
     city = fields.Char(string="City")

@@ -4,6 +4,7 @@ class Teacher(models.Model):
     _name = 'university.teacher'
     _description = 'Teacher'
 
+    image = fields.Image(string="Image", max_width=1920, max_height=1920)
     name = fields.Char(string="Name", required=True)
     university_id = fields.Many2one('university.university', string="University")
     department_id = fields.Many2one('university.department', string="Department")
