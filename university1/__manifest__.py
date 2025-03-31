@@ -15,6 +15,8 @@
         'views/grade_views.xml',
         'views/university_report_views.xml',
         'views/menu.xml',
+        'reports/student_report.xml',
+        'reports/student_report_template.xml',
     ],
     'application': True,
 }
