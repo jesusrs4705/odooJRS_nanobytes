@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="view_student_list" model="ir.ui.view">
         <field name="name">university.student.list</field>
@@ -5,6 +6,7 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
+                <field name="email"/>
                 <field name="university_id"/>
                 <field name="city"/>
                 <field name="country_id"/>
@@ -17,6 +19,13 @@
         <field name="model">university.student</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_send_report"
+                            string="Send Academic Report"
+                            type="object"
+                            class="btn-primary"
+                            invisible="not email"/>
+                </header>
                 <sheet>
                     <field name="image" widget="image" class="oe_avatar"/>
                     <div class="oe_button_box" name="button_box">
@@ -36,6 +45,8 @@
                         <group string="Academic Info">
                             <field name="university_id"/>
                             <field name="tutor_id"/>
+                            <field name="email"/>
+                            <field name="lang"/>
                         </group>
                         <group string="Address">
                             <field name="street"/>
@@ -54,6 +65,11 @@
                         </page>
                     </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
@@ -66,6 +82,7 @@
                 <field name="name"/>
                 <field name="university_id"/>
                 <field name="image"/>
+                <field name="email"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
@@ -80,6 +97,7 @@
                                     <field name="university_id"/>
                                 </div>
                                 <div class="o_kanban_tags_section">
+                                    <field name="email"/>
                                     <field name="city"/>
                                 </div>
                             </div>
