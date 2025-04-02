@@ -3,10 +3,12 @@
     'version': '1.0',
     'summary': 'University management module',
     'author': 'Jesus Rodriguez',
-    'depends': ['base', 'mail'],
+    'depends': ['base', 'mail', 'website'],
     'data': [
+        'security/website_security.xml',
         'security/ir.model.access.csv',
-        'data/mail_template.xml',  
+        'data/mail_template.xml',
+        'views/website_templates.xml',
         'views/university_views.xml',
         'views/department_views.xml',
         'views/teacher_views.xml',
@@ -19,5 +21,11 @@
         'reports/student_report.xml',
         'reports/student_report_template.xml',
     ],
+    'assets': {
+        'web.assets_frontend': [
+            '/university1/static/src/scss/custom.scss',
+        ],
+    },
     'application': True,
+    'license': 'LGPL-3',
 }

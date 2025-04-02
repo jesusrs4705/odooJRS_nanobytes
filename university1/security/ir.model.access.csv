@@ -7,3 +7,6 @@ access_university_student,university.student,model_university_student,base.group
 access_university_enrollment,university.enrollment,model_university_enrollment,base.group_user,1,1,1,1
 access_university_grade,university.grade,model_university_grade,base.group_user,1,1,1,1
 access_university_report,university.report,model_university_report,base.group_user,1,1,1,1
+access_university_university_public,university.university.public,model_university_university,base.group_public,1,0,0,0
+access_university_teacher_public,university.teacher.public,model_university_teacher,base.group_public,1,0,0,0
+access_university_department_public,university.department.public,model_university_department,base.group_public,1,0,0,0
