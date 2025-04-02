@@ -3,11 +3,12 @@
     'version': '1.0',
     'summary': 'University management module',
     'author': 'Jesus Rodriguez',
-    'depends': ['base', 'mail', 'website'],
+    'depends': ['base', 'mail', 'website', 'portal'],
     'data': [
         'security/website_security.xml',
         'security/ir.model.access.csv',
         'data/mail_template.xml',
+        'views/portal_templates.xml',
         'views/website_templates.xml',
         'views/university_views.xml',
         'views/department_views.xml',
