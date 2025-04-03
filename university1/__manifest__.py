@@ -26,6 +26,9 @@
         'web.assets_frontend': [
             '/university1/static/src/scss/custom.scss',
         ],
+        'web.assets_backend': [
+            '/university1/static/src/js/student_form.js',
+        ],
     },
     'application': True,
     'license': 'LGPL-3',

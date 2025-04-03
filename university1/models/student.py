@@ -90,7 +90,6 @@ class Student(models.Model):
             'context': {'default_student_id': self.id}
         }
 
-
     def action_send_report(self):
         '''Send academic report by email'''
         self.ensure_one()
@@ -109,8 +108,19 @@ class Student(models.Model):
                 'tag': 'display_notification',
                 'params': {
                     'title': 'Success',
-                    'message': 'Academic report has been sent by email',
+                    'message': f'A sample email has been send to {self.email}',
                     'type': 'success',
                     'sticky': False,
                 }
             }
+
+    def sendTestEmail(self):
+        """Handle the test email sending action triggered from JS"""
+        self.ensure_one()
+        if not self.email:
+            return False
+        
+        try:
+            return self.action_send_report()
+        except Exception:
+            return False

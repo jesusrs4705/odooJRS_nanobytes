@@ -18,7 +18,7 @@
         <field name="name">university.student.form</field>
         <field name="model">university.student</field>
         <field name="arch" type="xml">
-            <form>
+            <form js_class="student_form">
                 <header>
                     <button name="action_send_report"
                             string="Send Academic Report"
@@ -45,7 +45,16 @@
                         <group string="Academic Info">
                             <field name="university_id"/>
                             <field name="tutor_id"/>
-                            <field name="email"/>
+                            <label for="email"/>
+                            <div class="o_row">
+                                <field name="email" nolabel="1"/>
+                                <button 
+                                    name="sendTestEmail"
+                                    type="object"
+                                    class="fa fa-info-circle oe_link"
+                                    title="Send test email"
+                                    data-hotkey="i"/>
+                            </div>
                             <field name="lang"/>
                         </group>
                         <group string="Address">
