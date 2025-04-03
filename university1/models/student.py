@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class Student(models.Model):
     _name = 'university.student'
@@ -8,6 +9,7 @@ class Student(models.Model):
     image = fields.Image(string="Image", max_width=1920, max_height=1920)
     name = fields.Char(string="Name", required=True)
     email = fields.Char(string="Email", required=True)
+    user_id = fields.Many2one('res.users', string='Related User', readonly=True)
     lang = fields.Selection(
         selection='_get_lang',
         string='Language',
@@ -26,6 +28,33 @@ class Student(models.Model):
     # Counted fileds for the counters and their functions
     enrollments_count = fields.Integer(compute='_compute_enrollments_count', string='Enrollments Count')
     grades_count = fields.Integer(compute='_compute_grades_count', string='Grades Count')
+
+    _sql_constraints = [
+        ('unique_user', 'unique(user_id)', 'A user can only be linked to one student!')
+    ]
+
+    @api.model
+    def create(self, vals):
+        # Create student record
+        student = super(Student, self).create(vals)
+        
+        # Create portal user
+        user_vals = {
+            'name': vals.get('name'),
+            'login': vals.get('email'),
+            'email': vals.get('email'),
+            'password': 'change_me_123',
+            'groups_id': [(6, 0, [self.env.ref('base.group_portal').id])],
+            'lang': vals.get('lang', self.env.user.lang),
+        }
+        
+        try:
+            user = self.env['res.users'].with_context(no_reset_password=True).create(user_vals)
+            student.user_id = user.id
+        except Exception as e:
+            raise ValidationError(f"Error creating user: {str(e)}")
+            
+        return student
 
     @api.model
     def _get_lang(self):
