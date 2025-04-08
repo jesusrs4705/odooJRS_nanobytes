@@ -1,4 +1,5 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
+from markupsafe import escape
 from odoo.exceptions import ValidationError
 
 class Student(models.Model):
@@ -115,3 +116,29 @@ class Student(models.Model):
             return self.action_send_report()
         except Exception:
             return False
+    
+    def action_send_email(self):
+        '''Send academic report by email'''
+        self.ensure_one()
+        template = self.env.ref('university1.email_template_student_report')
+        if template:
+            template.send_mail(
+                self.id,
+                force_send=True,
+                email_values={
+                    'email_to': self.email,
+                    'auto_delete': True
+                }
+            )
+            return {
+                'toast_message': escape(_("A sample email has been send to %s",self.email)),
+                'type': 'ir.actions.client',
+                'tag': 'display_notification',
+                'params': {
+                    'title': 'Success',
+                    'message': f'A sample email has been send to {self.email}',
+                    'type': 'success',
+                    'sticky': False,
+                }
+                
+            }

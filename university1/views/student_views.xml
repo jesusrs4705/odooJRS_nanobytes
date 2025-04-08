@@ -48,12 +48,7 @@
                             <label for="email"/>
                             <div class="o_row">
                                 <field name="email" nolabel="1"/>
-                                <button 
-                                    name="sendTestEmail"
-                                    type="object"
-                                    class="fa fa-info-circle oe_link"
-                                    title="Send test email"
-                                    data-hotkey="i"/>
+                                <widget name="toaster_button" button_name="action_send_email" />
                             </div>
                             <field name="lang"/>
                         </group>
