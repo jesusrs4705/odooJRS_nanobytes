@@ -91,28 +91,19 @@ class Student(models.Model):
         }
 
     def action_send_report(self):
-        '''Send academic report by email'''
+        '''Open wizard to send academic report by email'''
         self.ensure_one()
-        template = self.env.ref('university1.email_template_student_report')
-        if template:
-            template.send_mail(
-                self.id,
-                force_send=True,
-                email_values={
-                    'email_to': self.email,
-                    'auto_delete': True
-                }
-            )
-            return {
-                'type': 'ir.actions.client',
-                'tag': 'display_notification',
-                'params': {
-                    'title': 'Success',
-                    'message': f'A sample email has been send to {self.email}',
-                    'type': 'success',
-                    'sticky': False,
-                }
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Send Academic Report',
+            'res_model': 'student.report.send.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_student_id': self.id,
+                'default_email_to': self.email,
             }
+        }
 
     def sendTestEmail(self):
         """Handle the test email sending action triggered from JS"""
